@@ -16,13 +16,13 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (item) => {
         setCartItems(prevItems => {
-            const itemExists = prevItems.find(x => x.idMeal === item.idMeal);
+            const itemExists = prevItems.find(x => x.idItem === item.idItem);
             return itemExists ? prevItems : [...prevItems, item];
         });
     };
 
-    const removeFromCart = (idMeal) => {
-        setCartItems(prevItems => prevItems.filter(item => item.idMeal !== idMeal));
+    const removeFromCart = (idItem) => {
+        setCartItems(prevItems => prevItems.filter(item => item.idItem !== idItem));
     };
 
     return (
