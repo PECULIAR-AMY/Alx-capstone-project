@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Search } from 'lucide-react';
 
 const SearchInput = ({ handleSubmit, query, isLoading, setQuery }) => (
@@ -17,5 +17,12 @@ const SearchInput = ({ handleSubmit, query, isLoading, setQuery }) => (
         </button>
     </form>
 );
+
+SearchInput.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    query: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    setQuery: PropTypes.func.isRequired,
+};
 
 export default SearchInput;

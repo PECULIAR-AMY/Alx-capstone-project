@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const CartContext = createContext();
 
@@ -16,13 +17,28 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (item) => {
         setCartItems(prevItems => {
-            const itemExists = prevItems.find(x => x.idItem === item.idItem);
-            return itemExists ? prevItems : [...prevItems, item];
+            const existingItem = prevItems.find(x => x.idMeal === item.idMeal);
+            if (existingItem) {
+                return prevItems.map(x =>
+                    x.idMeal === item.idMeal
+                        ? { ...x, quantity: (x.quantity || 1) + 1 }
+                        : x
+                );
+            }
+            return [...prevItems, { ...item, quantity: 1 }];
         });
     };
 
-    const removeFromCart = (idItem) => {
-        setCartItems(prevItems => prevItems.filter(item => item.idItem !== idItem));
+    const removeFromCart = (idMeal) => {
+        setCartItems(prevItems =>
+            prevItems
+                .map(item =>
+                    item.idMeal === idMeal
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item
+                )
+                .filter(item => item.quantity > 0)
+        );
     };
 
     return (
@@ -31,5 +47,8 @@ export const CartProvider = ({ children }) => {
         </CartContext.Provider>
     );
 };
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
-export default CartContext;
+export default CartContext
