@@ -7,6 +7,18 @@ Recipe Details: View comprehensive details including ingredients, instructions, 
 Cart Management: Add recipes to a cart (supports adding the same recipe multiple times with quantity tracking), view cart contents, and remove items incrementally.
 Responsive Design: Built with Tailwind CSS for a clean, mobile-friendly interface.
 Local Storage: Cart items persist across sessions using localStorage.
+
+## Run locally
+
+This is a Vite + React application, not a Next.js application. From this
+repository's root, run:
+
+```bash
+npm run dev
+```
+
+Then open http://127.0.0.1:5173. The application source is in
+`recipe-finder-app/`; do not run `next dev` for this project.
 Favorites Indicator: Visual feedback for items already in the cart.
 Technologies Used
 Frontend: React (with Hooks and Context API for state management)

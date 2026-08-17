@@ -1,0 +1,9 @@
+{
+  "name": "recipe-finder-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix recipe-finder-app run dev",
+    "build": "npm --prefix recipe-finder-app run build",
+    "lint": "npm --prefix recipe-finder-app run lint"
+  }
+}
